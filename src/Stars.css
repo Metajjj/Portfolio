@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*border: red dashed 2px;/*To better see elements */
+}
+
+.star {
+    background - color: #fdf7a1;
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    top: 2%;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px #fdf7a101, 0 0 0 8px #fdf7a121, 0 0 0 10px #fdf7a152;
+    /* Unusual delay? */
+    /* cubic(x) == linear keyword */
+    animation: stars 3s cubic-bezier(0,0,1,1) infinite;
+}
+
+    .star::before {
+        content: ""; /*needs content so ::before works*/
+
+        background-image: linear-gradient(45deg, #dddddd, #dddddd, transparent);
+        position: absolute; /*need abs else auto squashes*/
+        transform: translateY(2px);
+        height: 1px;
+        width: 400px;
+    }
+
+@keyframes stars {
+    0 % {
+        opacity: 0;
+        transform: rotate(-65deg) translateX(0);
+    }
+
+    69% {opacity:0;}
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(-65deg) translateX(-10000%);
+    }
+}
