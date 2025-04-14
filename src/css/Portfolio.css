@@ -1,0 +1,98 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    /*border: red dashed 2px;/*To better see elements*/
+}
+
+*[theme='dark']{
+    --Hbg: #000000; --Hfg: #f1eb00;
+    --Mbg:#222222; --Mfg: #dddddd;
+    --Fbg: #594219; --Ffg: #317619;
+    --Accent: #ff7c1e;
+}
+*[theme='light'] {
+    --Hfg: #000000;
+    --Hbg: #f1eb00;
+    --Mfg: #222222;
+    --Mbg: #dddddd;
+    --Ffg: #594219;
+    --Fbg: #317619;
+}
+
+
+body {
+    min-height: 180vh;
+    background-color: var(--Mbg);
+    color: var(--Mfg);
+    padding: 1vmin; /* ViewPort = screen = relative constant */
+}
+
+.clickable {
+    background-color: var(--Accent);
+    padding: .4vw;
+}
+
+header {
+    height:5vh;
+
+    background-color: var(--Hbg);
+    color: var(--Hfg);
+
+    position: sticky; /*same pos even if scroll -- given opacity hover to not block*/
+    opacity: 0.8;
+
+    display:flex; justify-content:space-evenly; flex-direction: row;
+}
+
+header > img{
+    /* % = parent*/
+    max-height: 100%; max-width:100%;
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        flex-direction: column;
+    }
+}
+
+header:hover {
+    opacity: 1;
+}
+
+.PageTitle {    
+    text-align: center;
+    
+    padding: 5px;
+    margin: auto;
+    animation: TitleAnim infinite 5s linear; /*linear = constant*/
+}
+
+footer {
+    background-color: var(--Fbg);
+    color: var(--Ffg);
+
+    position: fixed;
+    bottom: 5px;
+    width: 80%;
+    font-weight:bold;
+    height: 3vh
+}
+
+#marquee {
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    50% {
+        transform: translateX(85%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}

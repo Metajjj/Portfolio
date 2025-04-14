@@ -1,13 +1,41 @@
+<!--Portfolio HOME-->
 <!doctype HTML>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="src/css/Portfolio.css" />
+        <link rel="stylesheet" href="src/css/Stars.css" />
+    <title>Portfolio Home</title>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <body theme="dark">
+        <!-- Header Component -->
+        <header></header>
+        <script type="module" src="src/tsx/Header.tsx"></script>
+
+        <nav>Navy</nav>
+
+        <!-- Content Component -->
+        <div id="root"></div>
+
+        <footer>
+            <div id="marquee">
+                footer links
+            </div>
+        </footer>
+        
+    <!--<script type="module" src="/src/main.tsx"></script>-->
+
+        <script type="module" src="src/tsx/SpawnStars.tsx"></script>
+
+        <script>
+            //Centralise footer
+            let footer = document.querySelector("footer");
+            if (footer != undefined) {
+                footer.style.marginLeft = parseFloat(window.getComputedStyle(document.body).width.slice(0, -2)) / 2 -
+                    parseFloat(window.getComputedStyle(footer).width.slice(0, -2)) / 2 + "px";
+            }
+        </script>
+    </body>
 </html>
