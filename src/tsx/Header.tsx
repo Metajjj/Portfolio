@@ -1,10 +1,9 @@
 function Header() {
-    return (<>
-        <header>
+        //Need empty tags to signify fragment-based HTML code
+    return (<> 
             <img src="./src/assets/Logo.png" alt="logo" />
             <h1 className="PageTitle clickable">Home page</h1>
             <div className="clickable" onClick={ThemeControl}>Switch<br />Theme</div>
-        </header>
     </>);
 }
 
@@ -37,7 +36,7 @@ function ThemeControl() {
             return true;
         }
         return false;
-        }
+    }
     )) {
         let newPos = Themes.indexOf(currTheme) + 1 >= Themes.length ? 0 : Themes.indexOf(currTheme) + 1;
         let newTheme = Themes[newPos].substring(Themes[newPos].indexOf('"')+1, Themes[newPos].lastIndexOf('"'));

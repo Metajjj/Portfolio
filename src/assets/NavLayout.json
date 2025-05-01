@@ -1,0 +1,29 @@
+{
+  "Desktop": [
+    {
+      "Name": "AdventOfCode",
+      "Language": [ "C#" ],
+      "ImgBlob": "A" /*TODO*/,
+      "ImgDesc": "Explain the picture in detail",
+      "Content": "Talk about the application and project"
+    }
+  ],
+  "Mobile": [
+    {
+      "Name": "AdventOfCode",
+      "Language": [ "C#" ],
+      "ImgBlob": "A" /*TODO*/,
+      "ImgDesc": "Explain the picture in detail",
+      "Content": "Talk about the application and project"
+    }
+  ],
+  "Website": [
+    {
+      "Name": "AdventOfCode",
+      "Language": [ "C#" ],
+      "ImgBlob": "A" /*TODO*/,
+      "ImgDesc": "Explain the picture in detail",
+      "Content": "Talk about the application and project"
+    }
+  ]
+}
