@@ -1,9 +1,15 @@
+/*
+{
+  "Platform": ["A-Z projects"]
+   connect to GitHub to access the languages used?
+}*/
+
 {
   "Desktop": [
     {
       "Name": "AdventOfCode",
       "Language": [ "C#" ],
-      "ImgBlob": "A" /*TODO*/,
+      "ImgBlob": "base64 too long", //get from src based on Name ?
       "ImgDesc": "Explain the picture in detail",
       "Content": "Talk about the application and project"
     }

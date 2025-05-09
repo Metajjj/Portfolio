@@ -39,7 +39,7 @@ body {
     background-color: var(--Accent);
     padding: .4vw;
 }
-.clickable:hover{
+.clickable:hover, nav > ul > ul:hover{
     text-decoration: underline;
     cursor: pointer
 }
@@ -91,8 +91,7 @@ content {
     grid-column-gap: 2vw;
 }
 
-nav{
-    border:dashed red 2px;
+nav{    
     overflow-y: auto;
 }
 
@@ -106,6 +105,27 @@ nav{
 
 nav > ul {
     margin-bottom: 1vw;
+    padding-left:1vw;
+    text-align:left;
+}
+nav > ul:hover{
+    cursor:pointer;
+}
+
+nav > ul > ul {
+    text-align:right;
+}
+
+ul :hover{
+    cursor: pointer
+}
+ul > svg {
+    transform: rotate(-90deg);
+}
+
+/*whitespace picky - whitespace = child tag*/
+ul[class] {
+    background-color:#00000022;
 }
 
 #MainContent{

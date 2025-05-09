@@ -11,39 +11,91 @@ function Nav() {
                 Navy
             </div>
 
-            <ul onClick={()=>window.location.href = '/'}>
-                Home
-            </ul>
+        <ul id="Home" onClick={e => PlatformClicked(e.currentTarget)}>
+            Home
+        </ul>
 
-            <ul onClick={()=>window.location.href = '/2'}>
-                C#
-            <svg height="50" width="50" viewBox="0 0 100 100">
-                    //contentStyleType doesnt work! - auto converts tuple into semicolon-seperated string
+        <ul id="Desktop" onClick={e => PlatformClicked(e.currentTarget)}>
+            Desktop
+            <DDA />
+        </ul>
 
-                <path d="M 25,25 L 50,75 L 75,25 Z" style={{ fill: 'red', stroke: "#fff", strokeWidth: "3" }} />
-                </svg>
+        <ul className="Desktop" style={{ display: 'none' }}>
+            <ul onClick={e => ProjectClicked(e)}>
+                AdventOfCode
             </ul>
-            <ul onClick={()=>window.location.href = '/Python'}>
-                Python
+            <ul onClick={e => ProjectClicked(e)}>
+                Portfolio
             </ul>
-            <ul onClick={()=>window.location.href = '/PHP'}>
-                PHP
+            <ul onClick={e => ProjectClicked(e)}>
+                RecordShopMerged
             </ul>
-            <ul onClick={()=>window.location.href = '/React'}>
-                React
+        </ul>
+
+
+        <ul id="Android" onClick={e => PlatformClicked(e.currentTarget)}>
+            Android
+            <DDA />
+        </ul>
+
+        <ul className="Android" style={{ display: 'none' }}>
+            <ul onClick={e => ProjectClicked(e)}>
+                ChessKillMobile
             </ul>
-            <ul onClick={()=>window.location.href = '/FrontEnd'}>
-                HTML/CSS/JS
+            <ul onClick={e => ProjectClicked(e)}>
+                RemindFul
             </ul>
-            <ul onClick={()=>window.location.href = '/C++'}>
-                C++
+        </ul>
+
+
+        <ul id="Website" onClick={e => PlatformClicked(e.currentTarget)}>
+            Website
+            <DDA />
+        </ul>
+        <ul className="Website" style={{ display: 'none' }}>
+            <ul onClick={e => ProjectClicked(e)}>
+                BeatrootRestaurant
             </ul>
+            <ul onClick={e => ProjectClicked(e)}>
+                ChatRoom
+            </ul>
+            <ul onClick={e => ProjectClicked(e)}>
+                ImgFromImgs
+            </ul>
+        </ul>
+
     </>)
-
 }
 
-//import React from 'react';
+function PlatformClicked(e: HTMLElement) {
+    //svg inside ul
+    //console.log(e.children[0])
+
+                                    //Need to cast with 'as' 
+    let svg: SVGElement = e.children[0] as SVGElement;
+
+    if (svg.style.rotate.includes("9")) {
+        //opened
+        svg.style.rotate = "";
+
+        document.querySelector(`ul[class=${e.id}]`)!.setAttribute("style","display:none;");
+    } else {
+        //closed
+        svg.style.rotate = "90deg";
+
+        document.querySelector(`ul[class=${e.id}]`)!.removeAttribute("style");
+    }
+}
+function ProjectClicked(e: HTMLElement) {
+    //Bolden, unbolden the others - run RESTful APIS to gh
+    //implement event callback!
+    document.title = (new HTMLTitleElement().title = e.innerText);
+    console.log("clicked: " + e.innerText)
+}
+
+import React from 'react';
 import ReactClient from 'react-dom/client';
+import DDA from './DropDownArrow';
 
 ReactClient.createRoot(document.querySelector("nav")!).render(<Nav />);
                                             //Render the fragments as tags not as functions

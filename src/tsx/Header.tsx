@@ -10,7 +10,7 @@ function Header() {
 import React from 'react';
 import ReactClient from 'react-dom/client';
 
-ReactClient.createRoot(document.querySelector("header")!).render(Header());
+ReactClient.createRoot(document.querySelector("header")!).render(<Header />);
 
 function ThemeControl() {                           
     //null coalesce is || not ??
