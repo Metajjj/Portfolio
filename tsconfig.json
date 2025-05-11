@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "lib": [
+      
+    ]
   },
   "files": [],
   "references": [

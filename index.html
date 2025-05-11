@@ -7,61 +7,39 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="src/css/Portfolio.css" />
         <link rel="stylesheet" href="src/css/Stars.css" />
+
+            <!-- type module stops it loading in time? -->
+        <script src="src/tsx/Body.tsx" type="text/jsx"></script>
     <title>Portfolio Home</title>
+        
   </head>
-    <body theme="dark">
-        <!-- Header Component -->
+    <body id="root" theme="dark">
         <header></header>
         <script type="module" src="src/tsx/Header.tsx"></script>
 
-        <!-- Content Component -->
-        <content>
+        <div>
             <nav></nav>
-            <script type="module" src="src/tsx/Nav.tsx" ></script>
+            <script type="module" src="src/tsx/Nav.tsx"></script>
 
             <article id="MainContent">
-                <!-- change React component based on what's clicked.. run a func based on clicked ul? param -->
-
+                
                 <section>
                     abc 123
                 </section>
 
                 <figure>
                     <img src="dsa" />
-                    <figcaption>extra pic crap</figcaption>
+                    <figcaption>extra pic info</figcaption>
                 </figure>
 
             </article>
-            <!--TODO implement after setting styling-->
-            <script type="module" src="src/tsx/Article.tsx"> </script>
-        </content>
+            <script type="module" src="src/tsx/Article.tsx"></script>
+        </div>
 
-        <footer>            
-            footer links            
+        <footer>
+            footer links
         </footer>
 
-        <!--<script type="module" src="/src/main.tsx"></script>-->
-
         <script type="module" src="src/tsx/SpawnStars.tsx"></script>
-
-        <script>
-            //Centralise
-            function CentraliseHorizontal(footer) {
-                if (footer != undefined) {
-                    footer.style.marginLeft = parseFloat(window.getComputedStyle(document.body).width.slice(0, -2)) / 2 -
-                        parseFloat(window.getComputedStyle(footer).width.slice(0, -2)) / 2 + "px";
-                }
-            }
-
-            CentraliseHorizontal(document.querySelector("footer"));
-
-
-            /*
-                /users/{owner}/repos = list of public repos
-
-                /repos/{owner}/{RepoName} = Specific Repo
-                                        /languages = all code languages used
-            */
-        </script>
     </body>
 </html>

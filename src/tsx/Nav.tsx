@@ -21,13 +21,13 @@ function Nav() {
         </ul>
 
         <ul className="Desktop" style={{ display: 'none' }}>
-            <ul onClick={e => ProjectClicked(e)}>
+            <ul onClick={e => ProjectClicked(e.currentTarget)}>
                 AdventOfCode
             </ul>
-            <ul onClick={e => ProjectClicked(e)}>
+            <ul onClick={e => ProjectClicked(e.currentTarget)}>
                 Portfolio
             </ul>
-            <ul onClick={e => ProjectClicked(e)}>
+            <ul onClick={e => ProjectClicked(e.currentTarget)}>
                 RecordShopMerged
             </ul>
         </ul>
@@ -39,10 +39,10 @@ function Nav() {
         </ul>
 
         <ul className="Android" style={{ display: 'none' }}>
-            <ul onClick={e => ProjectClicked(e)}>
+            <ul onClick={e => ProjectClicked(e.currentTarget)}>
                 ChessKillMobile
             </ul>
-            <ul onClick={e => ProjectClicked(e)}>
+            <ul onClick={e => ProjectClicked(e.currentTarget)}>
                 RemindFul
             </ul>
         </ul>
@@ -52,14 +52,15 @@ function Nav() {
             Website
             <DDA />
         </ul>
+
         <ul className="Website" style={{ display: 'none' }}>
-            <ul onClick={e => ProjectClicked(e)}>
+            <ul onClick={e => ProjectClicked(e.currentTarget)}>
                 BeatrootRestaurant
             </ul>
-            <ul onClick={e => ProjectClicked(e)}>
+            <ul onClick={e => ProjectClicked(e.currentTarget)}>
                 ChatRoom
             </ul>
-            <ul onClick={e => ProjectClicked(e)}>
+            <ul onClick={e => ProjectClicked(e.currentTarget)}>
                 ImgFromImgs
             </ul>
         </ul>
@@ -70,30 +71,42 @@ function Nav() {
 function PlatformClicked(e: HTMLElement) {
     //svg inside ul
     //console.log(e.children[0])
+    if (e.innerText.toLowerCase().includes("home")) {
+        document.title = e.innerText;
+        ProjectClicked(e);
+        return;
+    }
 
                                     //Need to cast with 'as' 
     let svg: SVGElement = e.children[0] as SVGElement;
 
     if (svg.style.rotate.includes("9")) {
-        //opened
+        //closed
         svg.style.rotate = "";
 
         document.querySelector(`ul[class=${e.id}]`)!.setAttribute("style","display:none;");
     } else {
-        //closed
+        //opened
         svg.style.rotate = "90deg";
 
         document.querySelector(`ul[class=${e.id}]`)!.removeAttribute("style");
     }
 }
-function ProjectClicked(e: HTMLElement) {
+
+function ProjectClicked(e:  HTMLElement) {
     //Bolden, unbolden the others - run RESTful APIS to gh
     //implement event callback!
-    document.title = (new HTMLTitleElement().title = e.innerText);
-    console.log("clicked: " + e.innerText)
+    document.querySelector(".PageTitle")!.innerText = e.innerText +" page";
+
+    for (let x of document.querySelectorAll("ul[class]")) {
+        for (let X of x.children) {
+            X.style.fontStyle = "normal"
+        }
+    }
+
+    e.style.fontStyle = "italic";
 }
 
-import React from 'react';
 import ReactClient from 'react-dom/client';
 import DDA from './DropDownArrow';
 
