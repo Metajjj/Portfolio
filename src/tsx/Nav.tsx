@@ -105,10 +105,16 @@ function ProjectClicked(e:  HTMLElement) {
     }
 
     e.style.fontStyle = "italic";
+
+    //document.querySelector("article")!.setAttribute("Project", e.innerText)
+    ReactClient.hydrateRoot(document.getElementById("MainContent")!, <Article Project={e.innerText} />);
+    //TODO semi-works
 }
 
 import ReactClient from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 import DDA from './DropDownArrow';
+import Article from './Article';
 
 ReactClient.createRoot(document.querySelector("nav")!).render(<Nav />);
                                             //Render the fragments as tags not as functions

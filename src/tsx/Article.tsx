@@ -102,7 +102,7 @@ function Article({ Project = "RecordShopMerged" }: string) {
         
         new Promise((r, R) => ConnectToProject(Project + "/contents", r, R))
             .then( (val:any) => {
-                setSection(JSON.stringify(val));
+                setSection("Successful Connection");
                 return val;
                 //got contents
             })
@@ -179,7 +179,9 @@ function Article({ Project = "RecordShopMerged" }: string) {
                 }).catch(err => setFigCap(err))
             })
             .catch(err => {
-                setSection("ERRROR getting contents");
+                setSection("ERROR getting contents");
+                //TODO setup default bio
+                DefaultArticle(setSection, setImg, setFigCap);
             });   
     },[]) //Need empty array so only runs once - stops rate limits 
 
@@ -189,14 +191,37 @@ function Article({ Project = "RecordShopMerged" }: string) {
         </section>
 
         <figure>
-            <img src={imgURL} onClick={TempFS} />
+            <img src={imgURL} onClick={(e) => TempFS(e.currentTarget)} />
             <figcaption>{languages}</figcaption>
         </figure>
     </>);
 }
 
-function TempFS() {
-    //TODO temp FS
+function TempFS(e: HTMLImageElement) {
+    let Fs = document.createElement("div");
+    Fs.style.backgroundColor = "rgba(00,00,00,128)";
+    Fs.style.height = "100%"; Fs.style.width = "100%";
+    Fs.style.zIndex = "2";
+    Fs.style.position = "absolute";
+    Fs.onclick = e => document.body.removeChild(Fs); 
+
+    let FsImg = document.createElement("img");
+    FsImg.src = e.src;
+    FsImg.style.margin = "auto";
+    //centralise
+
+    Fs.appendChild(FsImg);
+
+    document.body.appendChild(Fs);
 }
 
-ReactDOM.createRoot(document.getElementById("MainContent")!).render(<Article />)
+function DefaultArticle(setSection: Function, setImg: Function, setFigCap: Function) {
+    setSection("Default bio");
+    //imgURL = linkedin
+    //languages = all..
+    //bio = cv-like..
+}
+
+ReactClient.createRoot(document.getElementById("MainContent")!).render(<Article Project="" />);
+
+export default Article;
