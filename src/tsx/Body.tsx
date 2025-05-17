@@ -1,38 +1,37 @@
 function Body() {
     return (<>
         
-        <header></header>
-        <script type="module" src="src/tsx/Header.tsx"></script>
-
+        <header>
+            <Header />
+        </header>
         
         <div>
-            <nav></nav>
-            <script type="module" src="src/tsx/Nav.tsx" ></script>
+            <nav>
+                <Nav />
+            </nav>
+            
 
             <article id="MainContent">
-      
 
-                <section>
-                    abc 12
-                </section>
-
-                <figure>
-                    <img src="dsa" />
-                    <figcaption>extra pic info</figcaption>
-                </figure>
+                <Article Project="Home" />
 
             </article>
-           
-            <script type="module" src="src/tsx/Article.tsx"> </script>
         </div>
 
         <footer>
             footer links
         </footer>
 
-        <script type="module" src="src/tsx/SpawnStars.tsx"></script>
+        <script src="./src/tsx/SpawnStars.tsx"> </script>
+        
     </>);
 }
+
+//turn scripts into components and import them
+
+import { Header } from './Header';
+import { Nav } from './Nav';
+import { Article } from './Article'
 
 import { StrictMode } from 'react';
 import ReactClient from 'react-dom/client';

@@ -1,19 +1,20 @@
-function Header() {
+//export = allowed to be imported if specified
+export function Header() {
         //Need empty tags to signify fragment-based HTML code
     return (<> 
-            <img src="./src/assets/Logo.png" alt="logo" />
+            <img src="./public/assets/Logo.png" alt="logo" />
             <h1 className="PageTitle clickable">Home page</h1>
             <div className="clickable" onClick={ThemeControl}>Switch<br />Theme</div>
     </>);
 }
 
-import React from 'react';
-import ReactClient from 'react-dom/client';
-
+/*import ReactClient from 'react-dom/client';
 ReactClient.createRoot(document.querySelector("header")!).render(<Header />);
+    setting up in Body.tsx frag - this makes it render too early
+*/
 
 function ThemeControl() {                           
-    //null coalesce is || not ??
+                                //null coalesce is || not ??
     let currTheme = document.body.getAttribute("theme") || "";
 
     let Themes = [];

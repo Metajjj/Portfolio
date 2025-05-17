@@ -5,7 +5,7 @@
 }
 
 .star {
-    background - color: #fdf7a1;
+    background-color: #fdf7a1;
     position: fixed;
     width: 5px;
     height: 5px;
@@ -28,10 +28,10 @@
     }
 
 @keyframes stars {
-    0 % {
+    /*0% {
         opacity: 0;
         transform: rotate(-65deg) translateX(0);
-    }
+    }*/
 
     69% {opacity:0;}
     70% {

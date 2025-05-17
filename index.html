@@ -3,43 +3,16 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="./src/assets/Logo.png" />
+        <link rel="icon" type="image/svg+xml" href="./public/assetsLogo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="src/css/Portfolio.css" />
-        <link rel="stylesheet" href="src/css/Stars.css" />
-
-            <!-- type module stops it loading in time? -->
-        <script src="src/tsx/Body.tsx" type="text/jsx"></script>
+        <link rel="stylesheet" href="src/css/Stars.css" />        
     <title>Portfolio Home</title>
         
   </head>
+
+<!--TODO minified React error when loading HOME / ADventOFCOde! - when running dist + png errors-->
     <body id="root" theme="dark">
-        <header></header>
-        <script type="module" src="src/tsx/Header.tsx"></script>
-
-        <div>
-            <nav></nav>
-            <script type="module" src="src/tsx/Nav.tsx"></script>
-
-            <article id="MainContent">
-                
-                <section>
-                    abc 123
-                </section>
-
-                <figure>
-                    <img src="dsa" />
-                    <figcaption>extra pic info</figcaption>
-                </figure>
-
-            </article>
-            <script type="module" src="src/tsx/Article.tsx"></script>
-        </div>
-
-        <footer>
-            footer links
-        </footer>
-
-        <script type="module" src="src/tsx/SpawnStars.tsx"></script>
+        <script type="module" src="./src/tsx/Body.tsx"></script>
     </body>
 </html>

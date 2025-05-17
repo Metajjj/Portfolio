@@ -1,6 +1,6 @@
 //https://www.kindacode.com/article/react-typescript-handling-onclick-event load multiple via vite
 
-function Nav() {
+export function Nav() {
 
     //let NavElement = document.createElement(""); //Creating elements breaks Reacts?
 
@@ -96,12 +96,12 @@ function PlatformClicked(e: HTMLElement) {
 function ProjectClicked(e:  HTMLElement) {
     //Bolden, unbolden the others - run RESTful APIS to gh
     //implement event callback!
-    document.querySelector(".PageTitle")!.innerText = e.innerText + " page";
+    (document.querySelector(".PageTitle")! as HTMLElement).innerText = e.innerText + " page";
     document.title = e.innerText;
 
     for (let x of document.querySelectorAll("ul[class]")) {
         for (let X of x.children) {
-            X.style.fontStyle = "normal"
+            (X as HTMLElement).style.fontStyle = "normal"
         }
     }
 
@@ -113,9 +113,8 @@ function ProjectClicked(e:  HTMLElement) {
 }
 
 import ReactClient from 'react-dom/client';
-import ReactDOM from 'react-dom/client';
 import DDA from './DropDownArrow';
 import Article from './Article';
 
-ReactClient.createRoot(document.querySelector("nav")!).render(<Nav />);
+//ReactClient.createRoot(document.querySelector("nav")!).render(<Nav />);
                                             //Render the fragments as tags not as functions

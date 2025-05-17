@@ -14,12 +14,11 @@
 </article>
 */
 
-import React, { useContext, useEffect, useState } from 'react';
-import ReactClient from 'react-dom/client';
-import ReactDOM from 'react-dom/client';
+import { useEffect, useState } from 'react';
+//import ReactClient from 'react-dom/client';
 
 //Client components cant be async 
-function ConnectToProject(ProjName: string = "", Pres, Prej ) {
+function ConnectToProject(ProjName: string = "", Pres: Function, Prej: Function) {
     let hc = new XMLHttpRequest();
 
     hc.onreadystatechange = () => {
@@ -89,8 +88,11 @@ function b64decodeContent(b64: string = "77u/Z2xvYmFsIHVzaW5nIFN5c3RlbS5SZWZsZWN
     
 }
 
+//Optional Param for fragment
+interface ArticleProject { Project?:string }
 // curly brackets for attributes of the fragment
-function Article({ Project = "Home" }: string) {
+export const Article: React.FC<ArticleProject> = ({ Project = "Home" }) => {
+
     let RepoName : string = Project;
 
     Project = `https://api.github.com/repos/${"Metajjj"}/${Project}`;
@@ -130,6 +132,7 @@ function Article({ Project = "Home" }: string) {
                             setSection(b64decodeContent(val["content"]))
                         }).catch((val: any) => {
                             setSection("Unable to detect the ReadMe in the project at root level!")
+                            console.log(val);
                         })
                     }
                 }
@@ -162,17 +165,18 @@ function Article({ Project = "Home" }: string) {
                             */
 
                             setImg(url);
+                            //TODO maybe a carousel?
 
-                        }).catch((val: any) => {
+                        }).catch( (val: any) => {
                             //console.log("Unable to detect the .png in the project at root level!")
+                            console.log(val);
                             setImg("dsa");
                         })
 
                     }
                 }
             })
-            .then(val => {
-
+            .then( () => {
                 //find languages
 
                 new Promise((r, R) => {
@@ -212,7 +216,7 @@ function TempFS(e: HTMLImageElement) {
     Fs.style.height = "100%"; Fs.style.width = "100%";
     Fs.style.zIndex = "2";
     Fs.style.position = "absolute";
-    Fs.onclick = e => document.body.removeChild(Fs); 
+    Fs.onclick = () => document.body.removeChild(Fs); 
 
     let FsImg = document.createElement("img");
     FsImg.src = e.src;
@@ -236,11 +240,11 @@ function DefaultArticle(setSection: Function, setImg: Function, setFigCap: Funct
     );
     //bio = cv-like.. 
 
-    setImg("./src/assets/LinkedIn_PFP.png");
+    setImg("./public/assets/LinkedIn_PFP.png");
 
     setFigCap("HTML | CSS | TypeScript | JavaScript | PHP | C# | Java | SQL | Python 3 | C++ | XML");
 }
 
-ReactClient.createRoot(document.getElementById("MainContent")!).render(<Article Project="" />);
+//ReactClient.createRoot(document.getElementById("MainContent")!).render(<Article Project="" />);
 
 export default Article;
