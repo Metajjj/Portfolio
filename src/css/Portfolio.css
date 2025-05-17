@@ -156,6 +156,7 @@ figure > img{
 }
 
 footer {
+    /*TODO force to bottom of grid layout*/
     align-self: end;
 
     padding: .5vh;
@@ -169,3 +170,7 @@ footer {
 
     margin-left: auto; margin-right:auto; /*CSS centralise footer*/
 }
+
+/*TODO
+    make nav and figure float when scroll ? 
+*/

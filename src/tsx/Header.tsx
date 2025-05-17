@@ -2,7 +2,7 @@
 export function Header() {
         //Need empty tags to signify fragment-based HTML code
     return (<> 
-            <img src="./public/assets/Logo.png" alt="logo" />
+            <img src="./assets//Logo.png" alt="logo" />
             <h1 className="PageTitle clickable">Home page</h1>
             <div className="clickable" onClick={ThemeControl}>Switch<br />Theme</div>
     </>);

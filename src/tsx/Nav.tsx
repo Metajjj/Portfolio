@@ -21,15 +21,15 @@ export function Nav() {
         </ul>
 
         <ul className="Desktop" style={{ display: 'none' }}>
-            <ul onClick={e => ProjectClicked(e.currentTarget)}>
-                AdventOfCode
-            </ul>
-            <ul onClick={e => ProjectClicked(e.currentTarget)}>
-                Portfolio
-            </ul>
-            <ul onClick={e => ProjectClicked(e.currentTarget)}>
-                RecordShopMerged
-            </ul>
+            {
+                ["AdventOfCode", "Portfolio", "RecordShopMerge"].map(p =>
+                (
+                    <ul onClick={e => ProjectClicked(e.currentTarget)}>
+                        {p}
+                    </ul>
+                )
+                )
+            }
         </ul>
 
 
@@ -39,12 +39,15 @@ export function Nav() {
         </ul>
 
         <ul className="Android" style={{ display: 'none' }}>
-            <ul onClick={e => ProjectClicked(e.currentTarget)}>
-                ChessKillMobile
-            </ul>
-            <ul onClick={e => ProjectClicked(e.currentTarget)}>
-                RemindFul
-            </ul>
+            {
+                ["ChessKillMobile", "RemindFul"].map(p =>
+                (
+                    <ul onClick={e => ProjectClicked(e.currentTarget)}>
+                        {p}
+                    </ul>
+                )
+                )
+            }
         </ul>
 
 
@@ -54,15 +57,15 @@ export function Nav() {
         </ul>
 
         <ul className="Website" style={{ display: 'none' }}>
-            <ul onClick={e => ProjectClicked(e.currentTarget)}>
-                BeatrootRestaurant
-            </ul>
-            <ul onClick={e => ProjectClicked(e.currentTarget)}>
-                ChatRoom
-            </ul>
-            <ul onClick={e => ProjectClicked(e.currentTarget)}>
-                ImgFromImgs
-            </ul>
+            {
+                ["BeatrootRestaurant", "ChatRoom","ImgFromImgs","Spreeview"].map(p =>
+                (
+                    <ul onClick={e => ProjectClicked(e.currentTarget)}>
+                        {p}
+                    </ul>
+                )
+                )
+            }
         </ul>
 
     </>)

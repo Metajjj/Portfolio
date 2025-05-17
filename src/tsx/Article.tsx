@@ -1,18 +1,3 @@
-/*
-<article id="MainContent">
-    <!-- change React component based on what's clicked.. run a func based on clicked ul? param -->
-
-    <section>
-        abc 123
-    </section>
-
-    <figure>
-        <img src="dsa" />
-        <figcaption>extra pic crap</figcaption>
-    </figure>
-
-</article>
-*/
 
 import { useEffect, useState } from 'react';
 //import ReactClient from 'react-dom/client';
@@ -198,9 +183,10 @@ export const Article: React.FC<ArticleProject> = ({ Project = "Home" }) => {
             });   
     },[]) //Need empty array so only runs once - stops rate limits
 
+    /*TODO allow rendering in .md format to be true to READMEs */
     return (<>
         <section>            
-            {globData}
+            <Markdown>{globData}</Markdown>
         </section>
 
         <figure>
@@ -209,6 +195,8 @@ export const Article: React.FC<ArticleProject> = ({ Project = "Home" }) => {
         </figure>
     </>);
 }
+
+import Markdown from 'react-markdown';
 
 function TempFS(e: HTMLImageElement) {
     let Fs = document.createElement("div");
@@ -240,7 +228,7 @@ function DefaultArticle(setSection: Function, setImg: Function, setFigCap: Funct
     );
     //bio = cv-like.. 
 
-    setImg("./public/assets/LinkedIn_PFP.png");
+    setImg("./assets//LinkedIn_PFP.png");
 
     setFigCap("HTML | CSS | TypeScript | JavaScript | PHP | C# | Java | SQL | Python 3 | C++ | XML");
 }
