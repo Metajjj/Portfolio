@@ -41,9 +41,16 @@ function ConnectToProject(ProjName: string = "", Pres, Prej ) {
             //console.log(globData);
 
             Pres(JSON.parse(hc.response));
+            //TODO maybe console.log("Connection tries left: " + hc.getResponseHeader("X-RateLimit-Remaining") )
+
         } else if (hc.status == 403 || hc.status == 429) {
             console.log("Rate limit!");
-            throw new Error("RATE LIMIT GH");
+            //throw new Error("RATE LIMIT GH");
+            let secs: number = parseInt("0" + hc.getResponseHeader("Retry-After"));            
+
+            Prej(
+                `Rate limit reached! Cannot access GitHub for now! Try again later! \n Time to wait: ${Math.floor(secs / 60) + ":" + secs % 60 }
+            `);
         }
         else if (hc.readyState == 4) {
             //error - state to make sure it has finished downloading
@@ -54,7 +61,6 @@ function ConnectToProject(ProjName: string = "", Pres, Prej ) {
 
     //type | url | async
     //let url:string = `https://api.github.com/repos/${"Metajjj"}/${ProjName}`;
-    //let url:string = `xx/Metajjj/${ProjName}` // TODO mock a fake server for test
     hc.open("GET", ProjName, true); //initialises a request    
 
     hc.send(null) //Json body    
@@ -84,12 +90,12 @@ function b64decodeContent(b64: string = "77u/Z2xvYmFsIHVzaW5nIFN5c3RlbS5SZWZsZWN
 }
 
 // curly brackets for attributes of the fragment
-function Article({ Project = "RecordShopMerged" }: string) {
-    let RepoName = Project;
+function Article({ Project = "Home" }: string) {
+    let RepoName : string = Project;
 
     Project = `https://api.github.com/repos/${"Metajjj"}/${Project}`;
     //not allowed to be global!
-    let [globData, setSection] = useState("Res.."); //TODO update FigCap after Section
+    let [globData, setSection] = useState("Res..");
 
     let [imgURL, setImg] = useState("dsa");
     let [languages, setFigCap] = useState("");
@@ -97,10 +103,15 @@ function Article({ Project = "RecordShopMerged" }: string) {
 
     useEffect(() => {
         // xx/contents xx/languages
-
-        //TODO triggering rate limit - promise within promise breaks it!
         
-        new Promise((r, R) => ConnectToProject(Project + "/contents", r, R))
+        new Promise((r, R) => {
+            if (RepoName.toLowerCase() == "home" || RepoName == "" || RepoName == undefined || RepoName == null) {
+                DefaultArticle(setSection, setImg, setFigCap);
+                return;
+            }
+            ConnectToProject(Project + "/contents", r, R)
+            
+        })
             .then( (val:any) => {
                 setSection("Successful Connection");
                 return val;
@@ -142,7 +153,7 @@ function Article({ Project = "RecordShopMerged" }: string) {
                             let branch = bf.split("?ref=")[1];
 
                             let url = `https://raw.githubusercontent.com/${"Metajjj"}/${RepoName}/${branch}/${fileName}`
-                            //TODO sort img - let url = "https://api.github.com/repos/Metajjj/RecordShopMerged/contents/WIP.PNG?ref=main"
+                            //sort img - let url = "https://api.github.com/repos/Metajjj/RecordShopMerged/contents/WIP.PNG?ref=main"
 
                             //`https://raw.githubusercontent.com/${"Metajjj"}/${RepoName}/${branch}/${name}`
 
@@ -179,11 +190,9 @@ function Article({ Project = "RecordShopMerged" }: string) {
                 }).catch(err => setFigCap(err))
             })
             .catch(err => {
-                setSection("ERROR getting contents");
-                //TODO setup default bio
-                DefaultArticle(setSection, setImg, setFigCap);
+                setSection("ERROR getting contents of " + RepoName+" \t\n "+err);
             });   
-    },[]) //Need empty array so only runs once - stops rate limits 
+    },[]) //Need empty array so only runs once - stops rate limits
 
     return (<>
         <section>            
@@ -207,7 +216,6 @@ function TempFS(e: HTMLImageElement) {
 
     let FsImg = document.createElement("img");
     FsImg.src = e.src;
-    FsImg.style.margin = "auto";
     //centralise
 
     Fs.appendChild(FsImg);
@@ -216,10 +224,21 @@ function TempFS(e: HTMLImageElement) {
 }
 
 function DefaultArticle(setSection: Function, setImg: Function, setFigCap: Function) {
-    setSection("Default bio");
-    //imgURL = linkedin
-    //languages = all..
-    //bio = cv-like..
+    setSection(
+        `   Overview: C#, .NET framework, Microsoft Visual Studio, Powershell, Git, Github, OOP Principles, Input/Output streams, Async C#, LINQ, NUnit Testing, Mocking with Moq.
+        Database: Microsoft SQL Server, T-SQL (transact SQL), Basic ADO.NET, Entity Framework, Data Normalisation, Schema Design, Relational databases, Data analysis, SQLite
+     Back-end: ASP.NET, MVC, Authentication in ASP.NET core, Middleware in ASP.NET core, Java, PHP, C#, WinForm
+     Front-end: HTML, CSS, DOM, Blazor, Razor, JavaScript
+     Web: AWS (Amazon Web Services), Netlify
+     General: Code Design Patterns, System Architecture, Pair Programming, Software Development, Software Engineering, Test Driven Development
+     Programming languages: HTML & CSS & TypeScript & JavaScript & PHP & C# & Java & SQL & Python 3 & C++ & XML
+     Additional skills: Imagine manipulation with GIMP & Inkscape, Video editing with Kdenlive , Modelling within Blender, Using Cisco packet tracer to setup a simulated network, Setting up and utilising virtual machines to learn different operating systems.`
+    );
+    //bio = cv-like.. 
+
+    setImg("./src/assets/LinkedIn_PFP.png");
+
+    setFigCap("HTML | CSS | TypeScript | JavaScript | PHP | C# | Java | SQL | Python 3 | C++ | XML");
 }
 
 ReactClient.createRoot(document.getElementById("MainContent")!).render(<Article Project="" />);

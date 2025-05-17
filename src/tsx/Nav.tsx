@@ -11,7 +11,7 @@ function Nav() {
                 Navy
             </div>
 
-        <ul id="Home" onClick={e => PlatformClicked(e.currentTarget)}>
+        <ul id="Home" className="Home" onClick={e => PlatformClicked(e.currentTarget)}>
             Home
         </ul>
 
@@ -96,7 +96,8 @@ function PlatformClicked(e: HTMLElement) {
 function ProjectClicked(e:  HTMLElement) {
     //Bolden, unbolden the others - run RESTful APIS to gh
     //implement event callback!
-    document.querySelector(".PageTitle")!.innerText = e.innerText +" page";
+    document.querySelector(".PageTitle")!.innerText = e.innerText + " page";
+    document.title = e.innerText;
 
     for (let x of document.querySelectorAll("ul[class]")) {
         for (let X of x.children) {

@@ -87,7 +87,9 @@ header > img {
 
 body > div {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    /*TODO stop overflow/stretching*/
+                            /*default 1fr == minmax(auto,1fr) and lets grid expand!*/
+    grid-template-columns: minmax(0,2fr) minmax(0,10fr);
     grid-column-gap: 2vw;    
 }
 
@@ -124,13 +126,14 @@ ul > svg {
 }
 
 /*whitespace picky - whitespace = child tag*/
-ul[class] {
-    background-color:#00000022;
+ul[class] > ul {
+    background-color: #00000022;
+    /*TODO marquee?*/
 }
 
 #MainContent{
     display:grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: minmax(0,4fr) minmax(0,1fr);
     grid-column-gap: 1vw;
 }
 
@@ -139,6 +142,10 @@ ul[class] {
     border-radius: 50px;
     background-color: var(--Hbg);
     padding:5px;
+    white-space: pre-wrap; /*pre interferes with wordwrap*/
+    word-wrap: break-word;
+    text-align:left;
+    overflow-y:auto;
 }
 
 figure{
