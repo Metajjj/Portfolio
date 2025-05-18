@@ -1,4 +1,4 @@
-function spawnRanStar( duration:Number ) {
+function spawnRanStar(duration: Number) {
     let ranX = Math.floor(Math.random() * 99 + 1);
     let nova = document.createElement("div");
     nova.classList.add("star");
@@ -29,7 +29,9 @@ function maintainStar() {
 
 }
 
-
-for (let i = 0; i < 5; i++) {
-    maintainStar();
+function SpawnStars() {
+    for (let i = 0; i < 5; i++) {
+        maintainStar();
+    }
 }
+export default SpawnStars;

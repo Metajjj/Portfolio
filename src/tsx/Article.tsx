@@ -183,7 +183,6 @@ export const Article: React.FC<ArticleProject> = ({ Project = "Home" }) => {
             });   
     },[]) //Need empty array so only runs once - stops rate limits
 
-    /*TODO allow rendering in .md format to be true to READMEs */
     return (<>
         <section>            
             <Markdown>{globData}</Markdown>
@@ -208,7 +207,7 @@ function TempFS(e: HTMLImageElement) {
 
     let FsImg = document.createElement("img");
     FsImg.src = e.src;
-    //centralise
+    //TODO centralise
 
     Fs.appendChild(FsImg);
 
@@ -217,20 +216,13 @@ function TempFS(e: HTMLImageElement) {
 
 function DefaultArticle(setSection: Function, setImg: Function, setFigCap: Function) {
     setSection(
-        `   Overview: C#, .NET framework, Microsoft Visual Studio, Powershell, Git, Github, OOP Principles, Input/Output streams, Async C#, LINQ, NUnit Testing, Mocking with Moq.
-        Database: Microsoft SQL Server, T-SQL (transact SQL), Basic ADO.NET, Entity Framework, Data Normalisation, Schema Design, Relational databases, Data analysis, SQLite
-     Back-end: ASP.NET, MVC, Authentication in ASP.NET core, Middleware in ASP.NET core, Java, PHP, C#, WinForm
-     Front-end: HTML, CSS, DOM, Blazor, Razor, JavaScript
-     Web: AWS (Amazon Web Services), Netlify
-     General: Code Design Patterns, System Architecture, Pair Programming, Software Development, Software Engineering, Test Driven Development
-     Programming languages: HTML & CSS & TypeScript & JavaScript & PHP & C# & Java & SQL & Python 3 & C++ & XML
-     Additional skills: Imagine manipulation with GIMP & Inkscape, Video editing with Kdenlive , Modelling within Blender, Using Cisco packet tracer to setup a simulated network, Setting up and utilising virtual machines to learn different operating systems.`
+        `   `
     );
     //bio = cv-like.. 
 
     setImg("./assets//LinkedIn_PFP.png");
 
-    setFigCap("HTML | CSS | TypeScript | JavaScript | PHP | C# | Java | SQL | Python 3 | C++ | XML");
+    setFigCap("");
 }
 
 //ReactClient.createRoot(document.getElementById("MainContent")!).render(<Article Project="" />);

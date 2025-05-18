@@ -24,7 +24,7 @@ export function Nav() {
             {
                 ["AdventOfCode", "Portfolio", "RecordShopMerge"].map(p =>
                 (
-                    <ul onClick={e => ProjectClicked(e.currentTarget)}>
+                    <ul key={p} onClick={e => ProjectClicked(e.currentTarget)}>
                         {p}
                     </ul>
                 )
@@ -42,7 +42,7 @@ export function Nav() {
             {
                 ["ChessKillMobile", "RemindFul"].map(p =>
                 (
-                    <ul onClick={e => ProjectClicked(e.currentTarget)}>
+                    <ul key={p} onClick={e => ProjectClicked(e.currentTarget)}>
                         {p}
                     </ul>
                 )
@@ -60,7 +60,7 @@ export function Nav() {
             {
                 ["BeatrootRestaurant", "ChatRoom","ImgFromImgs","Spreeview"].map(p =>
                 (
-                    <ul onClick={e => ProjectClicked(e.currentTarget)}>
+                    <ul key={p} onClick={e => ProjectClicked(e.currentTarget)}>
                         {p}
                     </ul>
                 )
