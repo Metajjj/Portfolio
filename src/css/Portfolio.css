@@ -2,7 +2,6 @@
 * {
     margin: 0;
     padding: 0;
-    text-align: center;
     /*border: red dashed 2px;/*To better see elements*/
 }
 
@@ -22,7 +21,9 @@
     --Accent: #cc6cfd
 }
 
-/*STARS*/
+/*STARS
+    TODO adjust stars to match theme
+*/
 .star {
     background-color: #fdf7a1;
     position: fixed;
@@ -78,11 +79,14 @@ body {
     display: grid;
     grid-template-rows: minmax(0,10%) minmax(0,80%) minmax(0,10%);
     grid-template-columns: 1fr;
+
+    min-width:400px;
 }
 
 .clickable {
     background-color: var(--Accent);
     padding: .4vw;
+    text-align: center;
 }
 .clickable:hover, nav > ul > ul:hover{
     text-decoration: underline;
@@ -109,7 +113,7 @@ header {
     justify-self: center;
 }
 
-/*TODO mobile layout vers*/
+/*TODO mobile layout vers ??*/
 @media screen and (max-width: 600px) {
 
     header {
@@ -134,15 +138,14 @@ header > img {
 
 body > div {
     display: grid;
-    /*TODO stop overflow/stretching*/
                             /*default 1fr == minmax(auto,1fr) and lets grid expand!*/
     grid-template-columns: minmax(0,2fr) minmax(0,10fr);
-    /*TODO nested grid except from parent grid restrictions?*/
     grid-column-gap: 2vw;    
 }
 
-nav{    
+nav{
     overflow-y: auto;
+    text-align:center;
 }
 
 #navTitle {
@@ -176,13 +179,13 @@ ul > svg {
 /*whitespace picky - whitespace = child tag*/
 ul[class] > ul {
     background-color: #00000022;
-    /*TODO marquee?*/
 }
 
 #MainContent{
     display:grid;
     grid-template-columns: minmax(0,4fr) minmax(0,1fr);
     grid-column-gap: 1vw;
+    overflow:auto;
 }
 
 #MainContent > section {
@@ -193,40 +196,46 @@ ul[class] > ul {
     white-space: pre-wrap; /*pre interferes with wordwrap*/
     word-wrap: break-word;
     text-align:left;
+
     overflow:auto;
+    
 }
 
 figure{
     margin:auto;
+    text-align:center;
 }
 figure > img{
     width:100%;
 }
 
 footer {
-    /*TODO force to bottom of grid layout*/
-    align-self: end;
-
+    text-align: center;
     padding: .5vh;
     background-color: var(--Fbg);
     color: var(--Ffg);
-    
     bottom: 0vh;
     width: 80%;
     font-weight: bold;
-    height: 3vh;
+    height: 5vh;
     overflow: auto;
-
     /*margin-left: auto; margin-right:auto;*/ /*CSS centralise footer - relative*/
-    left:50%; transform:translateX(-50%); /*CSS centralise footer - absolute*/
+    left: 50%;
+    transform: translateX(-50%); /*CSS centralise footer - absolute*/
 
-    position:fixed;
+    position: fixed;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 6fr 4fr;
+    grid-auto-flow: row;
+}
+footer img{
+    height:50px;
 }
 
 /*stop anchors overriding styles*/
 a{ text-decoration:inherit; color:inherit; }
 
 /*TODO
-    make nav and figure float when scroll ? 
     FsImg in <figure> needs to be sticky and scroll with user!
 */

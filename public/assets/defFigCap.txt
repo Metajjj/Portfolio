@@ -1,1 +1,0 @@
-HTML | CSS | TypeScript | JavaScript | PHP | C# | Java | SQL | Python 3 | C++ | XML | React | Blazor | Vite

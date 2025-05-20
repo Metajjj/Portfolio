@@ -23,7 +23,8 @@ function maintainStar() {
     let nova = spawnRanStar(lifeSpan);
     document.body.appendChild(nova);
     setTimeout(() => {
-        document.body.removeChild(nova);        
+        try { document.body.removeChild(nova); }
+        catch (Ex) { return; /* end early and dont continue if cant remove child star */ }
         maintainStar();
     }, lifeSpan * 1000 * 5);
 

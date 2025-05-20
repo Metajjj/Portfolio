@@ -22,7 +22,7 @@ export function Nav() {
 
         <ul className="Desktop" style={{ display: 'none' }}>
             {
-                ["AdventOfCode", "Portfolio", "RecordShopMerge"].map(p =>
+                ["AdventOfCode", "RecordShopMerged"].map(p =>
                 (
                     <ul key={p} onClick={e => ProjectClicked(e.currentTarget)}>
                         {p}
@@ -58,7 +58,7 @@ export function Nav() {
 
         <ul className="Website" style={{ display: 'none' }}>
             {
-                ["BeatrootRestaurant", "ChatRoom","ImgFromImgs","Spreeview"].map(p =>
+                ["Portfolio", "BeatrootRestaurant", "ChatRoom","ImgFromImgs","Spreeview"].map(p =>
                 (
                     <ul key={p} onClick={e => ProjectClicked(e.currentTarget)}>
                         {p}
