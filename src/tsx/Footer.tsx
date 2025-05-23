@@ -16,7 +16,9 @@ function Footer() {
         
         
       
-      </>);
+    </>);
+
+    //TODO dist add
 }
 
 export default Footer;
