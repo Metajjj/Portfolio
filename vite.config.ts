@@ -8,4 +8,7 @@ export default defineConfig({
         port: 64460,
     },
     logLevel: 'warn',
+    build: {
+        outDir: 'docs' //Set npm run build path for gh-pages
+    }
 })
