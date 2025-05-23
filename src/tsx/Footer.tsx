@@ -12,11 +12,10 @@ function Footer() {
                 </a>
             ))
         }
-        
-        
-        
       
     </>);
+
+    //TODO err 404 for GH-pgs
 }
 
 export default Footer;
