@@ -8,3 +8,4 @@
 
 # Logs
 **/*.log*1
+**/node_modules
