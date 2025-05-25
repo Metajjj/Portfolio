@@ -140,7 +140,7 @@ body > div {
     display: grid;
                             /*default 1fr == minmax(auto,1fr) and lets grid expand!*/
     grid-template-columns: minmax(0,2fr) minmax(0,10fr);
-    grid-column-gap: 2vw;    
+    grid-column-gap: 2vw;
 }
 
 nav{
@@ -186,6 +186,7 @@ ul[class] > ul {
     grid-template-columns: minmax(0,4fr) minmax(0,1fr);
     grid-column-gap: 1vw;
     overflow:auto;
+    /*TODO fix overflow width too wide!*/
 }
 
 #MainContent > section {
@@ -201,12 +202,15 @@ ul[class] > ul {
     
 }
 
-figure{
-    margin:auto;
-    text-align:center;
+figure {
+    margin: auto;
+    text-align: center;
 }
 figure > img{
     width:100%;
+}
+figure > figcaption{
+    word-wrap: anywhere;
 }
 
 footer {

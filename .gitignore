@@ -1,11 +1,12 @@
 **/.vs
 **/.git
 **/obj
+**/.vscode
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json\
 
 # Logs
-**/*.log*1
+**/*.log*
 **/node_modules
