@@ -1,0 +1,19 @@
+*[theme='dark'] {
+    --Hbg: #000000;
+    --Hfg: #f1eb00;
+    --Mbg: #222222;
+    --Mfg: #dddddd;
+    --Fbg: #594219;
+    --Ffg: #317619;
+    --Accent: #ff7c1e;
+}
+
+*[theme='light'] {
+    --Hfg: #000000;
+    --Hbg: #f1eb00;
+    --Mfg: #222222;
+    --Mbg: #dddddd;
+    --Ffg: #594219;
+    --Fbg: #317619;
+    --Accent: #cc6cfd
+}
