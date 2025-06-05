@@ -199,15 +199,40 @@ import Markdown from 'react-markdown';
 
 function TempFS(e: HTMLImageElement) {
     let Fs = document.createElement("div");
-    Fs.style.backgroundColor = "rgba(00,00,00,128)";
-    Fs.style.height = "100%"; Fs.style.width = "100%";
+    Fs.style.backgroundColor = "#000000df";
+    Fs.style.width = "100vw"; Fs.style.height = "100vh";
+
+    Fs.style.left = "50%"; Fs.style.top="50%"
+    Fs.style.transform = "translate(-50%,-50%)"
+    //Fs.style.margin = "auto";
+
     Fs.style.zIndex = "2";
     Fs.style.position = "absolute";
     Fs.onclick = () => document.body.removeChild(Fs); 
 
     let FsImg = document.createElement("img");
     FsImg.src = e.src;
-    //TODO centralise
+
+    FsImg.style.position = "absolute"; FsImg.style.left = "50%"; FsImg.style.top = "50%"
+    FsImg.style.transform = "translate(-50%,-50%)"
+
+    if (FsImg.height >= FsImg.width) {
+        FsImg.style.height = "80vh"
+    } else {
+        FsImg.style.width = "80vw"
+    }
+
+    FsImg.onclick = (event) => {
+        //unintentional click goes through img to behind elements
+        event.stopImmediatePropagation();
+
+        let a = document.createElement("a");
+        a.href = FsImg.src; a.target = "_blank";
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);        
+    };
 
     Fs.appendChild(FsImg);
 

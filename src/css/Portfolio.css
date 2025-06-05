@@ -2,6 +2,10 @@
 @import 'Stars.css';
 /*make the css more modular*/
 
+/*TODO 
+    tab-stops for non-mouse users / accessibility friendly
+*/
+
 
 * {
     margin: 0;
@@ -11,6 +15,9 @@
 
 
 body {
+    /*font-size is based on device .. specified fonts use em which reference this dynamic size*/
+    font-size:1vw;
+
     height: 100vh;
     background-color: var(--Mbg);
     color: var(--Mfg);
@@ -18,16 +25,15 @@ body {
     padding-right: 1vmin; /* ViewPort = screen = relative constant */
 
     display: grid;
-    grid-template-rows: minmax(0,10%) minmax(0,80%) minmax(0,10%);
+    grid-template-rows: minmax(60px,10%) minmax(400px,80%) minmax(50px,10%);
     grid-template-columns: 1fr;
+    grid-row-gap: 5px;
 
     min-width:400px;
 }
 
 .clickable {
     background-color: var(--Accent);
-    padding: .4vw;
-    text-align: center;
 }
 .clickable:hover, nav > ul > ul:hover{
     text-decoration: underline;
@@ -35,8 +41,9 @@ body {
 }
 
 header {
+    font-size: 1rem;
+
     padding: .5vh;
-    height:5vh;
     width: 90vw;
 
     background-color: var(--Hbg);
@@ -44,22 +51,15 @@ header {
 
     opacity: 0.8;
 
-
-    column-span: all;
-
     display:grid;
-    grid-template-columns: 1fr 8fr 1fr;
-    grid-template-rows: 100%;
+    grid-template-rows:100%;
+    grid-template-columns: 1fr 2fr 1fr;
+
+    justify-content:space-around;
+    justify-items: center; align-items:center;   
 
     justify-self: center;
-}
-
-/*TODO mobile layout vers ??*/
-@media screen and (max-width: 600px) {
-
-    header {
-        flex-direction: column;
-    }
+    
 }
 
 header:hover {
@@ -72,9 +72,13 @@ header > img {
     max-width: 100%;
 }
 
-.PageTitle {        
+header > .PageTitle {
     padding: 5px;
     margin: auto;
+}
+header > div {
+    margin: auto;
+    font-size: 1.5em
 }
 
 body > div {
@@ -84,9 +88,10 @@ body > div {
     grid-column-gap: 2vw;
 }
 
-nav{
+nav {
     overflow-y: auto;
-    text-align:center;
+    text-align: center;
+    font-size: 2em;
 }
 
 #navTitle {
@@ -122,12 +127,13 @@ ul[class] > ul {
     background-color: #00000022;
 }
 
-#MainContent{
-    display:grid;
+#MainContent {
+    font-size: 2em;
+
+    display: grid;
     grid-template-columns: minmax(0,4fr) minmax(0,1fr);
     grid-column-gap: 1vw;
-    overflow:auto;
-    /*TODO fix overflow width too wide!*/
+    overflow: auto;
 }
 
 #MainContent > section {
@@ -155,24 +161,33 @@ figure > figcaption{
 }
 
 footer {
+    font-size: 5em;
+
+
     text-align: center;
     padding: .5vh;
     background-color: var(--Fbg);
     color: var(--Ffg);
-    bottom: 0vh;
     width: 80%;
     font-weight: bold;
-    height: 5vh;
     overflow: auto;
-    /*margin-left: auto; margin-right:auto;*/ /*CSS centralise footer - relative*/
     left: 50%;
-    transform: translateX(-50%); /*CSS centralise footer - absolute*/
+    /**/ margin-left: auto;
+    margin-right: auto; /*CSS centralise footer - relative*/
+    /*transform: translateX(-50%); /*CSS centralise footer - absolute*/
 
-    position: fixed;
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 6fr 4fr;
     grid-auto-flow: row;
+}
+footer a{
+    text-align:center;
+    padding:auto;
+    margin:auto;
+    align-content:center;
+    align-items:center;
+    align-self:center;
 }
 footer img{
     height:50px;
@@ -181,6 +196,20 @@ footer img{
 /*stop anchors overriding styles*/
 a{ text-decoration:inherit; color:inherit; }
 
-/*TODO
-    FsImg in <figure> needs to be sticky and scroll with user!
-*/
+/*detects if width > height - i.e. large screens / desktop*/
+@media screen and (orientation: landscape){
+    header{
+/*        background-color:aqua;*/
+    }
+}
+@media screen and (orientation: portrait) {    
+    header {
+/*        background-color: red;*/
+    }
+}
+@media screen and (max-width: 600px) {
+
+}
+@media screen and (max-height: 400px){
+
+}
