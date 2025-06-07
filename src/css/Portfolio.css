@@ -90,11 +90,12 @@ header:hover {
     }
 }
 
-header > .PageTitle {
+                    /*means to target div that comes after .class (cascading)*/
+header > .PageTitle, .PageTitle + div {
     padding: 5px;
     margin: auto;
-    
 }
+
 header > div {
     margin: auto;
     font-size: 1.5em
