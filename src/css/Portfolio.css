@@ -3,7 +3,7 @@
 /*make the css more modular*/
 
 /*TODO 
-    tab-stops for non-mouse users / accessibility friendly
+    tab-stops for non-mouse users / accessibility friendly ? only works on <a> tags
 */
 
 
@@ -32,6 +32,7 @@ body {
     min-width:400px;
 }
 
+
 .clickable {
     background-color: var(--Accent);
 }
@@ -44,7 +45,7 @@ header {
     font-size: 1rem;
 
     padding: .5vh;
-    width: 90vw;
+    width: 82vw;
 
     background-color: var(--Hbg);
     color: var(--Hfg);
@@ -66,15 +67,33 @@ header:hover {
     opacity: 1;
 }
 
-header > img {
-    /* % = parent*/
-    max-height: 100%;
-    max-width: 100%;
+    header > #icon {
+        /* % = parent*/
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        text-shadow: 0px 0px 2px var(--Mbg);
+        --RanA: var(--Hfg);
+        --RanB: var(--Accent);
+        animation: rainbowText 5s ease infinite; /*TODO animated txt*/
+    }
+
+@keyframes rainbowText{
+
+    0%{
+        color: var(--RanA);
+    }
+    
+    
+    100%{
+        color: var(--RanB);
+    }
 }
 
 header > .PageTitle {
     padding: 5px;
     margin: auto;
+    
 }
 header > div {
     margin: auto;

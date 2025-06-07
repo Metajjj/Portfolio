@@ -5,7 +5,6 @@ function Body() {
         SpawnStars();
         //Isn't a component so have to execute with useEffect when body is component is attached
     });
-    //TODO add my name in portfolio
 
     return (<>
         
@@ -28,8 +27,10 @@ function Body() {
 
         <footer>
             <Footer />
-        </footer>        
+        </footer>
+        
     </>);
+    //TODO sort name
 }
 
 //turn scripts into components and import them

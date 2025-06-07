@@ -1,18 +1,30 @@
+import { useEffect } from "react";
+
 //export = allowed to be imported if specified
 export function Header() {
-        //Need empty tags to signify fragment-based HTML code
-    return (<> 
-            <img src="./assets//Logo.png" alt="logo" />
-            <h1 className="PageTitle clickable">Home page</h1>
-            <div className="clickable" onClick={ThemeControl}>Switch<br />Theme</div>
+    //Need empty tags to signify fragment-based HTML code
+
+    //TODO overlay img with my name - css animation col affect
+    useEffect(themeaticText);
+
+    return (<>
+        <div id="icon" style={{ background: "url(./assets/Logo.png)", backgroundSize:"cover" }}>
+            Jools<br/>Jannaway
+        </div>
+        <h1 className="PageTitle clickable">Home page</h1>
+        <div className="clickable" onClick={ThemeControl}>Switch<br />Theme</div>
     </>);
 }
 
-/*import ReactClient from 'react-dom/client';
-ReactClient.createRoot(document.querySelector("header")!).render(<Header />);
-    setting up in Body.tsx frag - this makes it render too early
-*/
-
+function themeaticText() {
+    //TODO loook into
+    return;
+    setInterval(() => {
+        var txt = document.getElementById("icon");
+        txt.style.setProperty("--RanA", "#000");
+        txt.style.setProperty("--RanB", "#FFF");
+    }, 1000 * 5);
+}
 function ThemeControl() {                           
                                 //null coalesce is || not ??
     let currTheme = document.body.getAttribute("theme") || "";
