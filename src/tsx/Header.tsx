@@ -20,7 +20,7 @@ function themeaticText() {
     //TODO loook into
     return;
     setInterval(() => {
-        var txt = document.getElementById("icon");
+        var txt = document.getElementById("icon")!;
         txt.style.setProperty("--RanA", "#000");
         txt.style.setProperty("--RanB", "#FFF");
     }, 1000 * 5);
